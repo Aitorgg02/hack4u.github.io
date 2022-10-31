@@ -32,7 +32,7 @@ body{
 }
 .nav-left:hover {
     color: #F82668;
-    transition: 0.3s;
+    transition: 0.4s;
     font-size: 18px;
 }
 
@@ -295,12 +295,12 @@ body{
 
 
 /*------- CONTACTO -------*/
-.header {
+/* .header {
     border: 2px solid rgb(7, 7, 78);
     color: rgb(7, 7, 78);
     font-size: 27px;
     padding: 10px;
-}
+} */
 
 .bigicon {
     font-size: 35px;
@@ -501,6 +501,23 @@ a:hover {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+.filtroCursos{
+    width: 400px;
+    padding-bottom: 2em;
+}
+
+.inputFiltrar{
+    margin-bottom: 1em;
+}
+
+#tituloCursosInscritos{
+    text-align: center;
+    color:#dd4b39;
+}
+
+#nombreUsuarioIndex{
+    color:aqua;
+}
 
 
 

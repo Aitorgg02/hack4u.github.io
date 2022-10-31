@@ -2,6 +2,7 @@ window.onload = function () {
     cargarCursosCiberseguridad();
     mostrarUsuarioLogueado();
 
+    document.getElementById("filtrar").addEventListener("click",filtrar());
 }
 
 //Variable global donde almacenamos la lista de Cursos de Ciberseguridad obtenidas del JSON
@@ -15,28 +16,6 @@ function cargarCursosCiberseguridad() {
     });
 }
 
-// function pintarCursosCiberseguridad(lista) {
-//     lista.forEach(resultado => {
-//         var texto =
-//     `<div class="card" style="width: 18rem;">
-//         <img class="card-img-top" src="${resultado.fotoCurso}" alt="Card image cap" style="margin-top:2em;">
-//         <div class="card-body">
-//           <h5 class="card-title">${resultado.titulo}</h5>
-//           <hr>
-//           <p class="card-text" style="text-align:center";>${resultado.autor}</p>
-//           <p class="card-text" style='visibility:hidden; display:none;'>${resultado.id}</p>
-//           <p class="card-text">${resultado.lecciones}</p>
-//           <p class="card-text">${resultado.horas}</p>`;
-//           if(localStorage.getItem("usuario") != null){
-//             texto += `<button class="btnInscribirse" type="button" onclick="inscribirse(event)">Inscribirse</button>`;
-//           }
-         
-//         texto += `</div>
-//         </div>`;
-
-//         document.getElementById("contenidoCiberseguridad").innerHTML += texto;
-//     });
-// }
 
 function ordenarLista() {
     document.getElementById("contenidoCiberseguridad").innerHTML = "";
@@ -55,7 +34,7 @@ function ordenarLista() {
                 0;
             }
         });
-        pintarCursos(ordenadaNombre,"contenidoTodasCategorias");
+        pintarCursos(ordenadaNombre,"contenidoCiberseguridad");
     }
 
     if (valueSelectOrdenar == "horas") {
@@ -69,7 +48,7 @@ function ordenarLista() {
                 0;
             }
         });
-        pintarCursos(ordenadaHoras,"contenidoTodasCategorias");
+        pintarCursos(ordenadaHoras,"contenidoCiberseguridad");
     }
 
     if (valueSelectOrdenar == "lecciones") {
@@ -83,7 +62,7 @@ function ordenarLista() {
                 0;
             }
         });
-        pintarCursos(ordenadaLecciones,"contenidoTodasCategorias");
+        pintarCursos(ordenadaLecciones,"contenidoCiberseguridad");
     }
 
     if (valueSelectOrdenar == "listaOriginal") {
@@ -91,4 +70,18 @@ function ordenarLista() {
         listaCursosCiberseguridad = listaOriginal.concat();
         cargarCursosCiberseguridad();
     }
+}
+
+function filtrar() {
+    var valorInput = document.getElementById("filtrar").value.toUpperCase();
+
+    var listaFiltrada = [];
+    var listaCursosTexto = JSON.stringify(listaCursos);
+    listaCursosTexto.forEach((curso) => {
+        if (curso.titulo.includes(valorInput)) {
+            listaFiltrada.push(curso);
+        }
+    });
+    
+    pintarCursos(listaFiltrada,"contenidoCiberseguridad");
 }

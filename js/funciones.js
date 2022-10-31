@@ -84,19 +84,6 @@ function pintarCursos(lista,idContenidoDiv) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*INSCRIBIRSE A LOS CURSOS*/
 //Funcion que nos permite inscribirnos a las ofertas y comprueba en el sessionStarage que no este escrito 
 function inscribirse(event) {

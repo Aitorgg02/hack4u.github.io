@@ -55,7 +55,7 @@ function ordenarLista() {
                 0;
             }
         });
-        pintarCursos(ordenadaNombre,"contenidoTodasCategorias");
+        pintarCursos(ordenadaNombre,"contenidoCiberseguridad");
     }
 
     if (valueSelectOrdenar == "horas") {
@@ -69,7 +69,7 @@ function ordenarLista() {
                 0;
             }
         });
-        pintarCursos(ordenadaHoras,"contenidoTodasCategorias");
+        pintarCursos(ordenadaHoras,"contenidoCiberseguridad");
     }
 
     if (valueSelectOrdenar == "lecciones") {
@@ -83,7 +83,7 @@ function ordenarLista() {
                 0;
             }
         });
-        pintarCursos(ordenadaLecciones,"contenidoTodasCategorias");
+        pintarCursos(ordenadaLecciones,"contenidoCiberseguridad");
     }
 
     if (valueSelectOrdenar == "listaOriginal") {

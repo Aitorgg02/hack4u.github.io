@@ -112,3 +112,43 @@ function inscribirse(event) {
         alert("¡YA EXISTE EN TU LISTA DE INSCRIPCIONES!");
     }
 }
+
+
+function filtrar(indexLista,idContenido) {
+    var valorInput = document.getElementById("filtrar").value.toUpperCase();
+
+    var listaFiltrada = [];
+    var listaCursosTexto = listaCursos[indexLista];
+    console.log(listaCursosTexto)
+   
+    listaCursosTexto.forEach((curso) => {
+            if (curso.titulo.toUpperCase().includes(valorInput)){
+                listaFiltrada.push(curso);
+            }
+    });
+    
+    document.getElementById(idContenido).innerHTML = "";
+    
+    pintarCursos(listaFiltrada, idContenido);
+}
+
+function filtrarTodasCategorias(idContenido) {
+    var valorInput = document.getElementById("filtrar").value.toUpperCase();
+
+    var listaFiltrada = [];
+    var listaCursosTexto = Object.values(listaCursos);
+    console.log(listaCursosTexto)
+   
+
+    listaCursosTexto.forEach((curso) => {
+        curso.forEach(element =>{
+            if (element.titulo.toUpperCase().includes(valorInput)){
+                listaFiltrada.push(element);
+            }
+        })  
+    });
+    
+    document.getElementById(idContenido).innerHTML = "";
+    
+    pintarCursos(listaFiltrada, idContenido);
+}

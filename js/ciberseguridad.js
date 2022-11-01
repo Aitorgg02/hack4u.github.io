@@ -2,7 +2,7 @@ window.onload = function () {
     cargarCursosCiberseguridad();
     mostrarUsuarioLogueado();
 
-    document.getElementById("filtrar").addEventListener("click",filtrar());
+    // document.getElementById("filtrar").addEventListener("click",filtrar());
 }
 
 //Variable global donde almacenamos la lista de Cursos de Ciberseguridad obtenidas del JSON
@@ -12,7 +12,7 @@ var listaCursos = [];
 function cargarCursosCiberseguridad() {
     $.get("/js/cursos.json", {}, (resultado) => {
         listaCursos = resultado;
-        pintarCursos(resultado.ciberseguridad,"contenidoCiberseguridad");
+        pintarCursos(resultado.ciberseguridad, "contenidoCiberseguridad");
     });
 }
 
@@ -34,7 +34,7 @@ function ordenarLista() {
                 0;
             }
         });
-        pintarCursos(ordenadaNombre,"contenidoCiberseguridad");
+        pintarCursos(ordenadaNombre, "contenidoCiberseguridad");
     }
 
     if (valueSelectOrdenar == "horas") {
@@ -48,7 +48,7 @@ function ordenarLista() {
                 0;
             }
         });
-        pintarCursos(ordenadaHoras,"contenidoCiberseguridad");
+        pintarCursos(ordenadaHoras, "contenidoCiberseguridad");
     }
 
     if (valueSelectOrdenar == "lecciones") {
@@ -62,7 +62,7 @@ function ordenarLista() {
                 0;
             }
         });
-        pintarCursos(ordenadaLecciones,"contenidoCiberseguridad");
+        pintarCursos(ordenadaLecciones, "contenidoCiberseguridad");
     }
 
     if (valueSelectOrdenar == "listaOriginal") {
@@ -72,16 +72,5 @@ function ordenarLista() {
     }
 }
 
-function filtrar() {
-    var valorInput = document.getElementById("filtrar").value.toUpperCase();
 
-    var listaFiltrada = [];
-    var listaCursosTexto = JSON.stringify(listaCursos);
-    listaCursosTexto.forEach((curso) => {
-        if (curso.titulo.includes(valorInput)) {
-            listaFiltrada.push(curso);
-        }
-    });
-    
-    pintarCursos(listaFiltrada,"contenidoCiberseguridad");
-}
+

@@ -519,6 +519,93 @@ a:hover {
     color:aqua;
 }
 
+/*************************/
+table,
+tr,
+td {
+    border: 1px solid white;
+}
+
+#central,
+#acciones {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+.imagenTabla{
+    width: 100px;
+}
+
+
+.error{
+    font-weight: bold;
+    color: red;
+}
+
+.opcionesEmp{
+    width: 30px;
+    cursor: pointer;
+}
+
+/* .cajaEdicion{
+    padding: 20px;
+    background: #162433;
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    z-index: 1;
+} */
+
+.cajaEdicion{
+    display: flex;
+    justify-content: center;
+    background: #162433;
+    padding: 20px;
+    top: 50%;
+}
+
+
+.cajaEdicion table tr td {
+    padding: 10px;
+}
+
+.cajaEdicion input{
+    color: #fff;
+    background: #162433;
+    border: none;
+    border-bottom: 2px solid #fff;
+}
+
+.cajaEdicion input:focus, input:active{
+    background: #162433;
+    border: none;
+    outline: none;
+}
+
+.cajaEdicion input:focus{
+    border-bottom: 3px solid #FF6B6C;
+}
+.cajaEdicion button {
+    margin: 8px;
+}
+
+#editEmp{
+    margin-top: 10px;
+}
+
+.logo-empleados{
+    width: 100px;
+}
+
+.nombreUser{
+    color: white;
+}
+
+.claveUser{
+    color: white;
+}
+
 
 
 

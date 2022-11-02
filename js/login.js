@@ -6,8 +6,7 @@ window.onload = function(){
 /*LOGIN DE USUARIO*/
 //Funcion para registrar y validar usuario usando la funcion de localStorage para registrar usuarios
 function loguearUsuario(){
-    var vNombreUsuario = document.getElementById("nombreUsuario").value;
-    console.log(vNombreUsuario);
+    var vNombreUsuario = document.getElementById("nombreUsuario").value.toLowerCase();
     var vEmail = document.getElementById("email").value;
     var vClave = document.getElementById("clave").value;
     

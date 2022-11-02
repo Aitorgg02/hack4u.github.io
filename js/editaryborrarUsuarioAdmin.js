@@ -65,11 +65,23 @@ function editarUsuario(email){
         console.log(usuarioEditar);
         console.log(listaUsuarios);
 
+        document.getElementById("btn-cerrarEdit").addEventListener("click",function(){
+            var cajaEdicion = document.getElementById("cajaEdicion");
+            cajaEdicion.remove();
+        });
+
 
     } else {
         alert("La lista de usuarios esta vacia");
     }
 }
+
+// function cerrarDiv(){
+//     document.getElementById("btn-cerrarEdit").addEventListener("click",function(){
+//         var cajaEdicion = document.getElementsByClassName("cajaEdicion");
+//         cajaEdicion.remove();
+//     });
+// }
 
 
 function eliminarUsuario(email) {
@@ -116,7 +128,6 @@ function mostrarUsuariosRegistrados() {
             divContenidoUsuarios.innerHTML += texto;
         });
     }
-
 }
 
 

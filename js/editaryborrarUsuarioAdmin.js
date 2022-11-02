@@ -6,9 +6,7 @@ window.onload = function () {
 
     //Boton actualizar usuario como Admin
     //document.getElementById("actualizarUsuario").addEventListener("click", actualizarUserAdmin);
-
     mostrarUsuariosRegistrados();
-
     comprobarUsuarioAdmin();
 }
 
@@ -52,36 +50,80 @@ window.onload = function () {
 
 
 //FALTA ACTUALIZAR EL LOCALSTORAGE Y LIMPIAR CON EL NUEVO USUARIO
-function editarUsuario(email){
+// function editarUsuario(email){
+//     var listaUsuarios = JSON.parse(localStorage.getItem("localListaUsuarios"));
+//     var form = document.getElementById("formUsuario");
+
+//     if (listaUsuarios != null) {
+//         var usuarioEditar = listaUsuarios.find(usuario => usuario.email == email);
+//         form.style.visibility = "visible";
+//         document.getElementById("nombreUsuarioForm").value = usuarioEditar.nombreUsuario;
+//         document.getElementById("emailForm").value = usuarioEditar.email;
+//         document.getElementById("claveForm").value = usuarioEditar.clave;
+//         console.log(usuarioEditar);
+//         console.log(listaUsuarios);
+
+//         document.getElementById("btn-cerrarEdit").addEventListener("click",function(){
+//             var cajaEdicion = document.getElementById("cajaEdicion");
+//             cajaEdicion.remove();
+//         });
+//     } else {
+//         alert("La lista de usuarios esta vacia");
+//     }
+// }
+
+
+//FALTA ACTUALIZAR EL LOCALSTORAGE Y LIMPIAR CON EL NUEVO USUARIO
+function editarUsuario(email) {
+    var divCentral = document.getElementById("central");
     var listaUsuarios = JSON.parse(localStorage.getItem("localListaUsuarios"));
-    var form = document.getElementById("formUsuario");
-
+    var usuarioEditar = listaUsuarios.find(usuario => usuario.email == email);
+    console.log(usuarioEditar);
     if (listaUsuarios != null) {
-        var usuarioEditar = listaUsuarios.find(usuario => usuario.email == email);
-        form.style.visibility = "visible";
-        document.getElementById("nombreUsuarioForm").value = usuarioEditar.nombreUsuario;
-        document.getElementById("emailForm").value = usuarioEditar.email;
-        document.getElementById("claveForm").value = usuarioEditar.clave;
-        console.log(usuarioEditar);
-        console.log(listaUsuarios);
+        var nuevoDiv = document.createElement("div");
+        divCentral.appendChild(nuevoDiv);
+        nuevoDiv.className = "cajaEdicion";
+        nuevoDiv.innerHTML = `
+        <form id="formEdicion">
+                <table>
+                    <tr>
+                        <td class="nombreUser">Nombre de usuario</td>
+                        <td><input type="text" id="nombreUsuarioForm" value="${usuarioEditar.nombreUsuario}"></td>
+                    </tr>
+                    <tr>
+                        <td class="emailUser">Email</td>
+                        <td><input type="text" disabled id="emailForm" value="${usuarioEditar.email}"></td>
+                    </tr>
+                    <tr>
+                        <td class="claveUser">Clave</td>
+                        <td><input type="password" id="claveForm" value="${usuarioEditar.clave}"></td>
+                    </tr>
+                </table>
+                <button type="button" id="btn-editEmp">Editar</button>
+                <button type="button" id="btn-cerrarEdit">Cerrar</button>
+            </form>
+        `;
 
-        document.getElementById("btn-cerrarEdit").addEventListener("click",function(){
-            var cajaEdicion = document.getElementById("cajaEdicion");
-            cajaEdicion.remove();
-        });
-
-
+        usuarioEditar.nombreUsuario = document.getElementById("nombreUsuarioForm");
+        usuarioEditar.email = document.getElementById("emailForm");
+        usuarioEditar.clave = document.getElementById("claveForm");
     } else {
         alert("La lista de usuarios esta vacia");
     }
+    document.getElementById("btn-cerrarEdit").addEventListener("click", function () {
+        nuevoDiv.remove();
+    });
 }
 
-// function cerrarDiv(){
-//     document.getElementById("btn-cerrarEdit").addEventListener("click",function(){
-//         var cajaEdicion = document.getElementsByClassName("cajaEdicion");
-//         cajaEdicion.remove();
-//     });
-// }
+
+
+
+
+
+
+function cerrarDiv(){
+        document.getElementById("btn-cerrarEdit").remove();
+}
 
 
 function eliminarUsuario(email) {

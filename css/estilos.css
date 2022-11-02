@@ -577,11 +577,6 @@ td {
     border-bottom: 2px solid #fff;
 }
 
-.cajaEdicion input:focus, input:active{
-    background: #162433;
-    border: none;
-    outline: none;
-}
 
 .cajaEdicion input:focus{
     border-bottom: 3px solid #FF6B6C;
@@ -603,6 +598,10 @@ td {
 }
 
 .claveUser{
+    color: white;
+}
+
+.emailUser{
     color: white;
 }
 

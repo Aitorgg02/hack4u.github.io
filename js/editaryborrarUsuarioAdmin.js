@@ -94,7 +94,7 @@ function mostrarUsuariosRegistrados() {
                 var texto = `<tr>
             <td>${usuarios.nombreUsuario}</td>
             <td>${usuarios.email}</td>
-            <td>${usuarios.clave}</td>
+            <td><button type='button' onclick="mostrarClave('${usuarios.email}')"><i class="fa-solid fa-eye"></i></button> <span id='claveMostrar_${usuarios.email}' class='d-none'>${usuarios.clave}</span></td>
             <td>NO SE PUEDE ELIMINAR</td>
             <td><button type='button' onclick='editarUsuario("${usuarios.email}")'><img id="editarUsuario" class="opcionesEmp" src="/images/editar.png" width='50px' height='50px'></img></button></td>
             </tr>`;
@@ -102,7 +102,7 @@ function mostrarUsuariosRegistrados() {
                 var texto = `<tr>
             <td>${usuarios.nombreUsuario}</td>
             <td>${usuarios.email}</td>
-            <td>${usuarios.clave}</td>
+            <td><button type='button' onclick="mostrarClave('${usuarios.email}')"><i class="fa-solid fa-eye"></i></button> <span id='claveMostrar_${usuarios.email}' class='d-none'>${usuarios.clave}</span></td>
             <td><button type='button' onclick='eliminarUsuario("${usuarios.email}")'><img id="eliminarUsuario" class="opcionesEmp" src="/images/eliminar.png" width='50px' height='50px'></img></button></td>
             <td><button type='button' onclick='editarUsuario("${usuarios.email}")'><img id="editarUsuario" class="opcionesEmp" src="/images/editar.png" width='50px' height='50px'></img></button></td>
             </tr>`;
@@ -111,6 +111,11 @@ function mostrarUsuariosRegistrados() {
             divContenidoUsuarios.innerHTML += texto;
         });
     }
+}
+
+function mostrarClave(email){
+    var claveMostrar = document.getElementById("claveMostrar_" + email) 
+    claveMostrar.classList.toggle('d-none');
 }
 
 

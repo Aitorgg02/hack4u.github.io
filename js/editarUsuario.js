@@ -21,7 +21,7 @@ function mostrarDatosUsuarioenForm() {
     }
 }
 
-//Actrualizamos el usuario si no hay campos vacio ni nombre usuario o email existen ya en el localStorage
+//Actualizamos el usuario si no hay campos vacio ni nombre usuario o email existen ya en el localStorage
 function actualizarUser(event){
     event.preventDefault();
     var usuario = document.getElementById("nombreUsuarioForm").value;

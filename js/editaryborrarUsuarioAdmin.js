@@ -10,75 +10,13 @@ window.onload = function () {
     comprobarUsuarioAdmin();
 }
 
-//Funcion actualizar a un usuario como Admin
-// function actualizarUserAdmin() {
-//     var usuario = document.getElementById("nombreUsuarioForm").value;
-//     var mail = document.getElementById("emailForm").value;
-//     var password = document.getElementById("claveForm").value;
-
-//     var listaAlmacenada = [];
-//     var listaUsuarios = [];
-//     listaAlmacenada = localStorage.getItem('localListaUsuarios');
-//     listaUsuarios = JSON.parse(listaAlmacenada);
-//     var nombreUsuarioLogueado = localStorage.getItem("usuario").split(",");
-
-//     if (usuario != "" && mail != "" && password != "") {
-//         if (listaUsuarios.findIndex(element =>
-//             element.nombreUsuario == usuario
-//             && element.email == mail && element.clave == password) == -1) {
-//             for (i = 0; i < listaUsuarios.length; i++) {
-//                 if (listaUsuarios[i].nombreUsuario == usuario || listaUsuarios[i].email == mail) {
-//                     listaUsuarios.splice(i, 1);
-//                 }
-//             }
-
-//             listaUsuarios.push({ nombreUsuario: usuario, email: mail, clave: password });
-//             listaAlmacenada = JSON.stringify(listaUsuarios);
-//             localStorage.setItem('localListaUsuarios', listaAlmacenada);
-//             alert("¡USUARIO ACTUALIZADO!");
-//             document.getElementById("formUsuario").reset();
-//         } else {
-//             alert("Ese NOMBRE USUARIO/EMAIL ya existen, no puede actualizar el usuario");
-//         }
-//     } else {
-//         alert("Debe completar TODOS los campos para actualizar el usuario");
-//     }
-
-//     location.href = 'editarUsuarioAdmin.html';
-
-// }
 
 
-//FALTA ACTUALIZAR EL LOCALSTORAGE Y LIMPIAR CON EL NUEVO USUARIO
-// function editarUsuario(email){
-//     var listaUsuarios = JSON.parse(localStorage.getItem("localListaUsuarios"));
-//     var form = document.getElementById("formUsuario");
-
-//     if (listaUsuarios != null) {
-//         var usuarioEditar = listaUsuarios.find(usuario => usuario.email == email);
-//         form.style.visibility = "visible";
-//         document.getElementById("nombreUsuarioForm").value = usuarioEditar.nombreUsuario;
-//         document.getElementById("emailForm").value = usuarioEditar.email;
-//         document.getElementById("claveForm").value = usuarioEditar.clave;
-//         console.log(usuarioEditar);
-//         console.log(listaUsuarios);
-
-//         document.getElementById("btn-cerrarEdit").addEventListener("click",function(){
-//             var cajaEdicion = document.getElementById("cajaEdicion");
-//             cajaEdicion.remove();
-//         });
-//     } else {
-//         alert("La lista de usuarios esta vacia");
-//     }
-// }
-
-
-//FALTA ACTUALIZAR EL LOCALSTORAGE Y LIMPIAR CON EL NUEVO USUARIO
 function editarUsuario(email) {
     var divCentral = document.getElementById("central");
     var listaUsuarios = JSON.parse(localStorage.getItem("localListaUsuarios"));
     var usuarioEditar = listaUsuarios.find(usuario => usuario.email == email);
-    console.log(usuarioEditar);
+    
     if (listaUsuarios != null) {
         var nuevoDiv = document.createElement("div");
         divCentral.appendChild(nuevoDiv);
@@ -104,25 +42,28 @@ function editarUsuario(email) {
             </form>
         `;
 
-        usuarioEditar.nombreUsuario = document.getElementById("nombreUsuarioForm");
-        usuarioEditar.email = document.getElementById("emailForm");
-        usuarioEditar.clave = document.getElementById("claveForm");
+        document.getElementById("btn-editEmp").addEventListener("click", function(){
+            usuarioEditar.nombreUsuario = document.getElementById("nombreUsuarioForm").value;
+            usuarioEditar.email = document.getElementById("emailForm").value;
+            usuarioEditar.clave = document.getElementById("claveForm").value;
+            console.log(usuarioEditar);
+        
+            // usuarioEliminar.nombreUsuario = usuarioEditar.nombreUsuario;
+            // listaUsuarios.splice(usuarioEliminar, 1);
+            console.log(listaUsuarios)
+            localStorage.removeItem("localListaUsuarios");
+            localStorage.setItem("localListaUsuarios", JSON.stringify(listaUsuarios));
+
+            document.getElementById("contenidoUsuarios").innerHTML = "";
+            mostrarUsuariosRegistrados();
+        });
+
     } else {
         alert("La lista de usuarios esta vacia");
     }
     document.getElementById("btn-cerrarEdit").addEventListener("click", function () {
         nuevoDiv.remove();
     });
-}
-
-
-
-
-
-
-
-function cerrarDiv(){
-        document.getElementById("btn-cerrarEdit").remove();
 }
 
 

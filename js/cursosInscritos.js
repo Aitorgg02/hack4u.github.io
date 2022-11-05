@@ -8,7 +8,7 @@ function mostrarCursosInscritos() {
     var usuario = localStorage.getItem("usuario").split(",")[0];
 
 
-    if (cursosInscritos != null) {
+    if (cursosInscritos != null && cursosInscritos.length > 0) {
         cursosInscritos.forEach(curso => {
             if (curso.usuario == usuario) {
                 var texto =
@@ -31,7 +31,7 @@ function mostrarCursosInscritos() {
             }
         });
     } else {
-        document.getElementById("tablaCursosInscritos").innerHTML += "<span class='text-center'>NO ESTÁS INSCRITO A NINGUN CURSO.</span>";
+        document.getElementById("tablaCursosInscritos").innerHTML += "<h3 class='text-center text-white' >NO ESTÁS INSCRITO A NINGUN CURSO.</h3>";
     }
 }
 

@@ -152,3 +152,72 @@ function filtrarTodasCategorias(idContenido) {
     
     pintarCursos(listaFiltrada, idContenido);
 }
+
+
+function ordenarLista(idContenido,indexLista) {
+    document.getElementById(idContenido).innerHTML = "";
+    var valueSelectOrdenar = document.getElementById("ordenarCursos").value;
+    var listaCursosFiltrada = [];
+    listaCursosFiltrada.push(listaCursos[indexLista]);
+
+    if (valueSelectOrdenar == "nombre") {
+        var ordenadaNombre = listaCursosFiltrada[0].sort(function ordenar(a, b) {
+            listaOriginal = listaCursosFiltrada[0].concat();
+            if (b.titulo < a.titulo) {
+                return 1;
+            } else if (b.titulo > a.titulo) {
+                return -1;
+            } else {
+                0;
+            }
+        });
+        pintarCursos(ordenadaNombre, idContenido);
+    }
+
+    if (valueSelectOrdenar == "horas") {
+        var ordenadaHoras = listaCursosFiltrada[0].sort(function ordenar(a, b) {
+            listaOriginal = listaCursosFiltrada[0].concat();
+            if (b.horas > a.horas) {
+                return 1;
+            } else if (b.horas < a.horas) {
+                return -1;
+            } else {
+                0;
+            }
+        });
+        pintarCursos(ordenadaHoras, idContenido);
+    }
+
+    if (valueSelectOrdenar == "lecciones") {
+        var ordenadaLecciones = listaCursosFiltrada[0].sort(function ordenar(a, b) {
+            listaOriginal = listaCursosFiltrada[0].concat();
+            if (b.lecciones > a.lecciones) {
+                return 1;
+            } else if (b.lecciones < a.lecciones) {
+                return -1;
+            } else {
+                0;
+            }
+        });
+        pintarCursos(ordenadaLecciones, idContenido);
+    }
+
+    if (valueSelectOrdenar == "listaOriginal") {
+        listaOriginal = listaCursosFiltrada[0].concat();
+        listaCursosFiltrada = listaOriginal.concat();
+        cargarCursosFiltrados(idContenido);
+        
+    }
+}
+
+function cargarCursosFiltrados(idContenido){
+    if(idContenido == "contenidoCiberseguridad"){
+        cargarCursosCiberseguridad();
+    }else if(idContenido == "contenidoSoftware"){
+        cargarCursosSoftware();
+    }else if(idContenido == "contenidoVideojuegos"){
+        cargarCursosVideojuegos();
+    }
+}
+
+

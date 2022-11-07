@@ -1,11 +1,12 @@
-window.onload = () => {
+window.onload = function(){
     cargarPreguntasFrecuentes();
     mostrarUsuarioLogueado();
-    //mostrarUsuarioLogueadoHtml();
 }
 
 var listaPreguntas = [];
 
+
+//Cojo los datos del json y llamo a la funcion de pintar para mostrar por pantalla los datos
 function cargarPreguntasFrecuentes(){
     $.get("../js/faqs.json",{},(resultado) =>{
         listaPreguntas = resultado;
@@ -13,6 +14,8 @@ function cargarPreguntasFrecuentes(){
     });
 }
 
+
+//Le pasamos la lista vacia donde vamos a añadir los datos que sacaremos a partir de el faqs.json
 function pintarPreguntasFrecuentes(lista){
     lista.forEach(preguntas =>{
         var texto = 

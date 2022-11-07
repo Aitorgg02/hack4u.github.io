@@ -3,11 +3,15 @@ window.onload = function () {
     mostrarUsuarioLogueado();
 }
 
+
+//Cogemos el nombre del usuario y si ese usuario tiene cursos inscritos con el localStorage 
+//guardamos los cursos en los que se ha inscrito
 function mostrarCursosInscritos() {
     var cursosInscritos = JSON.parse(localStorage.getItem("inscripciones"));
     var usuario = localStorage.getItem("usuario").split(",")[0];
 
 
+    //Importante si el localStorage.length es < 0 es que no hay cursos inscritos y si es nulo
     if (cursosInscritos != null && cursosInscritos.length > 0) {
         cursosInscritos.forEach(curso => {
             if (curso.usuario == usuario) {
@@ -39,7 +43,7 @@ function mostrarCursosInscritos() {
 
 
 
-//Funcion para eliminar los cursos inscritos
+//Funcion para eliminar los cursos inscritos con el event y actualizando el localStorage
 function eliminarCursosInscritos(event) {
     var cursosInscritos = JSON.parse(localStorage.getItem("inscripciones"));
     var id = event.target.parentNode.parentNode.getElementsByTagName("p")[1].innerHTML;

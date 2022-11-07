@@ -4,6 +4,8 @@ window.onload = function(){
     mostrarUsuarioLogueado(); //Se obtiene del archico funciones.js
 }
 
+
+//Funcion donde se valida la funcion y manda un email con la funcion mail
 function enviarContacto(event){
     event.preventDefault();
 

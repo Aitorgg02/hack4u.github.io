@@ -2,7 +2,7 @@ window.onload = function(){
     document.getElementById("btnContacto").addEventListener("click", mostrarContacto);
     cargarEmpleados();
     mostrarUsuarioLogueado(); 
-    //mostrarUsuarioLogueadoHtml();
+    
 }
 
 var listaEmpleados = [];

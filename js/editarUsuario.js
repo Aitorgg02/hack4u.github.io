@@ -56,7 +56,3 @@ function actualizarUser(event){
         alert("Debe completar TODOS los campos para actualizar el usuario");
     }
 }
-
-function tablaUsuariosRegistrados(){
-    
-}

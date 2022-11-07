@@ -27,6 +27,8 @@ function registrarUsuario(){
 
     var listUsers = obtenerListaUsuarios();
 
+    //Vamos a buscar la posicion del nombre de usuario o del email y validar si los datos introducidos son validos
+    //si se valida correctamente llamaremos a la funcion que tenemos para añadirla en el localStorage
     if(listUsers.findIndex(usuario => usuario.nombreUsuario == vNombreUsuario || usuario.email == vEmail)){
         if(nombreUsuarioRegex.test(vNombreUsuario)){
             if(emailRegex.test(vEmail)){
@@ -88,13 +90,3 @@ function localStorageListaUsuarios(lista){
     localStorage.setItem("localListaUsuarios", JSON.stringify(lista));
 }
 
-//Funcion para obtener la lista de usuarios almacenads en el localStorage
-function obtenerListaUsuarios(){
-    var listaAlmacenada = localStorage.getItem('localListaUsuarios');
-    if(listaAlmacenada == null){
-        listaUsuarios = [];
-    }else{
-        listaUsuarios = JSON.parse(listaAlmacenada);
-    }
-    return listaUsuarios;
-}

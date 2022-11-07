@@ -1,8 +1,7 @@
 window.onload = function () {
     cargarCursosCiberseguridad();
     mostrarUsuarioLogueado();
-
-    // document.getElementById("filtrar").addEventListener("click",filtrar());
+    // document.getElementById("filtrar").addEventListener("change",()=> ordenarLista('contenidoCiberseguridad','ciberseguridad'));
 }
 
 //Variable global donde almacenamos la lista de Cursos de Ciberseguridad obtenidas del JSON

@@ -1,17 +1,12 @@
 window.onload = function () {
     mostrarUsuarioLogueado(); //Lo obtenemos de funciones.js
 
-    //Boton borrar usuario como Admin
-    //document.getElementById("borrarUsuario").addEventListener("click", borrarUserAdmin);
-
-    //Boton actualizar usuario como Admin
-    //document.getElementById("actualizarUsuario").addEventListener("click", actualizarUserAdmin);
     mostrarUsuariosRegistrados();
     comprobarUsuarioAdmin();
 }
 
 
-
+//Le pasamos el email del usuario para poder editar dicho usuario.
 function editarUsuario(email) {
     var divCentral = document.getElementById("central");
     var listaUsuarios = JSON.parse(localStorage.getItem("localListaUsuarios"));
@@ -42,15 +37,12 @@ function editarUsuario(email) {
             </form>
         `;
 
+        //Cuando se actica el evento del boton editar cogemos los datos nuevos introducidos para poder borrar lo que habia antes en el localStorage y volver
+        // a escribirlo con el nuevo usuario, luego vaciamos la tabla y volvemos a cargarla con otra funcion para mostrarla con los nuevos usuarios
         document.getElementById("btn-editEmp").addEventListener("click", function(){
             usuarioEditar.nombreUsuario = document.getElementById("nombreUsuarioForm").value;
             usuarioEditar.email = document.getElementById("emailForm").value;
             usuarioEditar.clave = document.getElementById("claveForm").value;
-            console.log(usuarioEditar);
-        
-            // usuarioEliminar.nombreUsuario = usuarioEditar.nombreUsuario;
-            // listaUsuarios.splice(usuarioEliminar, 1);
-            console.log(listaUsuarios)
             localStorage.removeItem("localListaUsuarios");
             localStorage.setItem("localListaUsuarios", JSON.stringify(listaUsuarios));
 
@@ -61,12 +53,16 @@ function editarUsuario(email) {
     } else {
         alert("La lista de usuarios esta vacia");
     }
+    //Cierra la ventana de editar el usuario
     document.getElementById("btn-cerrarEdit").addEventListener("click", function () {
         nuevoDiv.remove();
     });
 }
 
 
+//Le pasamos el email del usuario para poder eliminarlo porque el email es unico, no puede haber mas de un email registrado.
+//Cogemos del localStorage con getItem la lista entera de usuarios y buscamos con find el que sea igual que el email introducido 
+//y borramos de la lista y actualizamos la lista
 function eliminarUsuario(email) {
     var listaUsuarios = JSON.parse(localStorage.getItem("localListaUsuarios"));
     if (listaUsuarios != null) {
@@ -82,10 +78,11 @@ function eliminarUsuario(email) {
     mostrarUsuariosRegistrados();
 }
 
+//Cogemos toda la lista de usuarios del localStorage, lo convertimos a un array porque estan como objetos y si esta lleno el local pinta una tabla 
+//con los usuarios que hay dentro de la lista
 function mostrarUsuariosRegistrados() {
     var usuarios = localStorage.getItem("localListaUsuarios");
     var listaUsuarios = JSON.parse(usuarios); //Convertido a un array
-    console.log(listaUsuarios);
 
     var divContenidoUsuarios = document.getElementById("contenidoUsuarios");
     if (listaUsuarios != null) {
@@ -113,19 +110,19 @@ function mostrarUsuariosRegistrados() {
     }
 }
 
+//Funcion pasandole el email para mostrar la clave cuando pulsas la imagen (se llama a la funcion en el onclick de la funcion mostrarUsuariosRegistrados)
 function mostrarClave(email){
     var claveMostrar = document.getElementById("claveMostrar_" + email) 
     claveMostrar.classList.toggle('d-none');
 }
 
 
-//Si no eres admin te manda al index
+//Si no eres admin te manda al index, validacion que se tiene que hacer en el servidor
 function comprobarUsuarioAdmin() {
     var usuarioLogueado = localStorage.getItem("usuario");
-    //console.log(usuarioLogueado);
+    
     if (usuarioLogueado != null) {
         var nombreUsuarioLogueado = localStorage.getItem("usuario").split(",");
-        //document.getElementById("nombreUsuarioIndex").innerHTML = nombreUsuarioLogueado[0];
 
         if (nombreUsuarioLogueado[1] != "admin@gmail.com") {
             location.href = '/index.html';

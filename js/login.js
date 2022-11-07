@@ -1,6 +1,5 @@
 window.onload = function(){
     document.getElementById("btnLogin").addEventListener("click", loguearUsuario);
-
 }
 
 /*LOGIN DE USUARIO*/
@@ -26,7 +25,6 @@ function loguearUsuario(){
 }
 
 //Array donde guardaremos los datos de los usuarios registrados 
-
 var listaUsuarios = [];
 
 //Si localStorage de listaUsuarios es nulo cargamos el usuario Admin por defecto
@@ -35,13 +33,3 @@ if(localStorage.getItem("localListaUsuarios") == null){
     localStorage.setItem("localListaUsuarios", JSON.stringify(listaUsuarios));
 }
 
-//Funcion para obtener la lista de Usuarios almacenados en el localStorage
-function obtenerListaUsuarios(){
-    var listaAlmacenada = localStorage.getItem("localListaUsuarios");
-    if(listaAlmacenada == null) {
-        listaUsuarios = [];
-    } else {
-        listaUsuarios = JSON.parse(listaAlmacenada);
-    }
-    return listaUsuarios;
-}

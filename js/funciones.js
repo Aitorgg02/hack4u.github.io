@@ -2,11 +2,14 @@
 
 //-----------------------------------
 
+
+
 /*DATOS USUARIO LOGUEADO*/
-//Mostramos el nombre de usuario y las opciones disponibles en el navbar según tipo de usuario
+//Mostramos el nombre de usuario y las opciones disponibles en el navbar según tipo de usuario (admin o usuario sin privilegios de admin)
 function mostrarUsuarioLogueado() {
     var usuarioLogueado = localStorage.getItem("usuario");
-    //console.log(usuarioLogueado);
+    
+    //Troceamos el usuario, nos interesa el nombre de usuario en este caso y mostramos unas paginas u otras dependiendo el usuario si es admin o no
     if (usuarioLogueado != null) {
         var nombreUsuarioLogueado = localStorage.getItem("usuario").split(",");
         document.getElementById("nombreUsuarioIndex").innerHTML = nombreUsuarioLogueado[0];
@@ -59,7 +62,7 @@ function mostrarCanaveral() {
 
 
 
-
+//Funcion general para pintar todos los cursos, donde le paso por parametros la lista que es diferente y el id donde quiero que se pinte en el html
 function pintarCursos(lista,idContenidoDiv) {
     lista.forEach(resultado => {
         var texto =
@@ -72,6 +75,8 @@ function pintarCursos(lista,idContenidoDiv) {
           <p class="card-text" style='visibility:hidden; display:none;'>${resultado.id}</p>
           <p class="card-text">${resultado.lecciones}</p>
           <p class="card-text">${resultado.horas}</p>`;
+
+          //Si el localStorage esta vacio entonces llamo con onclick a la funcion inscribirse para que puedas registrarte
           if(localStorage.getItem("usuario") != null){
             texto += `<button class="btnInscribirse" type="button" onclick="inscribirse(event)">Inscribirse</button>`;
           }
@@ -113,7 +118,7 @@ function inscribirse(event) {
     }
 }
 
-
+//Funcion filtrar, donde en cada pagina de cada curso se puede filtrar en tiempo real por nombre del curso
 function filtrar(indexLista,idContenido) {
     var valorInput = document.getElementById("filtrar").value.toUpperCase();
 
@@ -132,6 +137,8 @@ function filtrar(indexLista,idContenido) {
     pintarCursos(listaFiltrada, idContenido);
 }
 
+
+//Funcion para filtrar por todas las categorias, igual que la anterior funcion pero solo funciona en el apartado "todasCategorias.html"
 function filtrarTodasCategorias(idContenido) {
     var valorInput = document.getElementById("filtrar").value.toUpperCase();
 
@@ -154,8 +161,9 @@ function filtrarTodasCategorias(idContenido) {
 }
 
 
+//Funcion para ordenar la lista dependiendo que value se seleccione en el select
 function ordenarLista(idContenido,indexLista) {
-    document.getElementById(idContenido).innerHTML = "";
+    document.getElementById(idContenido).innerHTML = ""; //Vaciamos primero la lista 
     var valueSelectOrdenar = document.getElementById("ordenarCursos").value;
     var listaCursosFiltrada = [];
     listaCursosFiltrada.push(listaCursos[indexLista]);
@@ -210,6 +218,8 @@ function ordenarLista(idContenido,indexLista) {
     }
 }
 
+
+//Funcion en el que dependiendo el id del contenido lo muestro en un apartado distinto
 function cargarCursosFiltrados(idContenido){
     if(idContenido == "contenidoCiberseguridad"){
         cargarCursosCiberseguridad();
@@ -218,6 +228,17 @@ function cargarCursosFiltrados(idContenido){
     }else if(idContenido == "contenidoVideojuegos"){
         cargarCursosVideojuegos();
     }
+}
+
+//Funcion para obtener la lista de Usuarios almacenados en el localStorage
+function obtenerListaUsuarios(){
+    var listaAlmacenada = localStorage.getItem("localListaUsuarios");
+    if(listaAlmacenada == null) {
+        listaUsuarios = [];
+    } else {
+        listaUsuarios = JSON.parse(listaAlmacenada);
+    }
+    return listaUsuarios;
 }
 
 

@@ -1,6 +1,11 @@
 window.onload = function(){
     cargarCursosVideojuegos();
     mostrarUsuarioLogueado();
+
+    document.getElementById("linkFacebook").addEventListener("click",mostrarFacebook);
+    document.getElementById("linkTwitter").addEventListener("click",mostrarTwitter);
+    document.getElementById("linkGoogle").addEventListener("click",mostrarGoogle);
+    document.getElementById("linkInstagram").addEventListener("click",mostrarInstagram);
     
 }
 

@@ -8,6 +8,7 @@
 //Mostramos el nombre de usuario y las opciones disponibles en el navbar según tipo de usuario (admin o usuario sin privilegios de admin)
 function mostrarUsuarioLogueado() {
     var usuarioLogueado = localStorage.getItem("usuario");
+    var DivcursosInscritos = document.getElementById("cursosInscritos");
     
     //Troceamos el usuario, nos interesa el nombre de usuario en este caso y mostramos unas paginas u otras dependiendo el usuario si es admin o no
     if (usuarioLogueado != null) {
@@ -18,16 +19,39 @@ function mostrarUsuarioLogueado() {
             <li><a class="dropdown-item" href="/html/editarUsuarioAdmin.html">Editar/Borrar Usuario</a></li>
             <li><a class="dropdown-item" href="#" onclick="cerrarSesion()">Cerrar Sesión</a></li>`;
             document.getElementById("funcionesUsuario").innerHTML = texto;
+
+            var a = document.createElement("a");
+            a.href = "/html/cursosInscritos.html";
+            a.innerHTML = "CURSOS INSCRITOS";
+            a.className = "nav-left";
+            a.style.visibility = "visible";
+
+            DivcursosInscritos.appendChild(a);
+            console.log(DivcursosInscritos.appendChild(a));
         } else {
             var texto = `<li><a class="dropdown-item" href="/html/editarUsuario.html">EDITAR Mi Usuario</a></li>
             <li><a class="dropdown-item" href="#" onclick="cerrarSesion()">Cerrar Sesión</a></li>`;
             document.getElementById("funcionesUsuario").innerHTML = texto;
+
+            var a = document.createElement("a");
+            a.href = "/html/cursosInscritos.html";
+            a.innerHTML = "CURSOS INSCRITOS";
+            a.className = "nav-left";
+            a.style.visibility = "visible";
+            DivcursosInscritos.appendChild(a);
         }
     } else {
         document.getElementById("usuarioRegistrarse").innerHTML = "<a href='/html/registro.html' class='nav-link text-primary'>Regístrese</a>";
+
+        
+        var a = document.createElement("a");
+        a.href = "/html/cursosInscritos.html";
+        a.innerHTML = "CURSOS INSCRITOS";
+        a.className = "nav-left";
+        a.style.visibility = "hidden";
+        DivcursosInscritos.appendChild(a);
     }
 }
-
 
 
 //Cierra la sesion del usuario actual llevando al login y borrando localStorage del usuario Logueado

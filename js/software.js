@@ -2,6 +2,11 @@ window.onload = function () {
     cargarCursosSoftware();
     mostrarUsuarioLogueado();
 
+    document.getElementById("linkFacebook").addEventListener("click",mostrarFacebook);
+    document.getElementById("linkTwitter").addEventListener("click",mostrarTwitter);
+    document.getElementById("linkGoogle").addEventListener("click",mostrarGoogle);
+    document.getElementById("linkInstagram").addEventListener("click",mostrarInstagram);
+
 }
 
 //Variable global donde almacenamos la lista de Cursos de Software obtenidas del JSON

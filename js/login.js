@@ -33,3 +33,15 @@ if(localStorage.getItem("localListaUsuarios") == null){
     localStorage.setItem("localListaUsuarios", JSON.stringify(listaUsuarios));
 }
 
+
+//Funcion para obtener la lista de Usuarios almacenados en el localStorage
+function obtenerListaUsuarios(){
+    var listaAlmacenada = localStorage.getItem("localListaUsuarios");
+    if(listaAlmacenada == null) {
+        listaUsuarios = [];
+    } else {
+        listaUsuarios = JSON.parse(listaAlmacenada);
+    }
+    return listaUsuarios;
+}
+

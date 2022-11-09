@@ -2,6 +2,11 @@ window.onload = function(){
     document.getElementById("enviarContacto").addEventListener("click", enviarContacto);
 
     mostrarUsuarioLogueado(); //Se obtiene del archico funciones.js
+
+    document.getElementById("linkFacebook").addEventListener("click",mostrarFacebook);
+    document.getElementById("linkTwitter").addEventListener("click",mostrarTwitter);
+    document.getElementById("linkGoogle").addEventListener("click",mostrarGoogle);
+    document.getElementById("linkInstagram").addEventListener("click",mostrarInstagram);
 }
 
 

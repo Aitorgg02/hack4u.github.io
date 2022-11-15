@@ -23,7 +23,7 @@ function cargarTodosCursos() {
 }
 
 
-function ordenarLista() {
+function ordenarListaTodos() {
     document.getElementById("contenidoTodasCategorias").innerHTML = "";
     var valueSelectOrdenar = document.getElementById("ordenarCursos").value;
     var listaTodosCursos = [];

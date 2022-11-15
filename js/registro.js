@@ -14,11 +14,6 @@ function registrarUsuario(){
     var vClave = document.getElementById("clave").value;
     var vClaveConfirmacion = document.getElementById("claveConfirmacion").value;
 
-    console.log(vNombreUsuario);
-    console.log(vEmail);
-    console.log(vClave);
-    console.log(vClaveConfirmacion);
-
     nombreUsuarioRegex = /^[a-zA-Z]+$/;
     emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
     claveRegex = /[1-9][a-zA-Z]{8,}/; //La clave debe ser minimo de 8 caracteres

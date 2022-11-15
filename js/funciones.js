@@ -27,7 +27,7 @@ function mostrarUsuarioLogueado() {
             a.style.visibility = "visible";
 
             DivcursosInscritos.appendChild(a);
-            console.log(DivcursosInscritos.appendChild(a));
+            
         } else {
             var texto = `<li><a class="dropdown-item" href="/html/editarUsuario.html">EDITAR Mi Usuario</a></li>
             <li><a class="dropdown-item" href="#" onclick="cerrarSesion()">Cerrar Sesión</a></li>`;
